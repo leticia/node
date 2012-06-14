@@ -101,6 +101,12 @@ if (cmd === 'install') {
     'deps/uv/include/uv.h'
   ], 'include/node/');
 
+  // man page
+  copy(['doc/node.1'], 'share/man/man1/');
+
+  // dtrace
+  copy(['src/node.d'], 'lib/dtrace/');
+
   // Private uv headers
   copy([
     'deps/uv/include/uv-private/eio.h', 'deps/uv/include/uv-private/ev.h',
@@ -147,7 +153,8 @@ if (cmd === 'install') {
 } else {
   remove([
      'bin/node', 'bin/npm', 'bin/node-waf',
-     'include/node/*', 'lib/node_modules', 'lib/node'
+     'include/node/*', 'lib/node_modules', 'lib/node',
+     'lib/dtrace/node.d', 'share/man/man1/node.1'
   ]);
 }
 
